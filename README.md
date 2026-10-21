@@ -29,6 +29,7 @@ docker compose up -d
 ```
 
 This will start:
+
 - **PostgreSQL 17** on `localhost:5432`
   - User: `postgres`
   - Password: `postgres`
@@ -38,6 +39,7 @@ This will start:
   - Password: `elastic`
 
 Verify containers are running:
+
 ```bash
 docker ps
 ```
@@ -82,6 +84,7 @@ pnpm populate
 ```
 
 This will:
+
 - Create the `products` table in PostgreSQL
 - Create the `products` index in Elasticsearch
 - Stream and batch-insert all records into both stores
@@ -92,11 +95,13 @@ This will:
 Check that both stores have the same row count:
 
 **PostgreSQL:**
+
 ```bash
 docker exec -it elastic_search_postgres psql -U postgres -d elastic_search_db -c "SELECT COUNT(*) FROM products;"
 ```
 
 **Elasticsearch:**
+
 ```bash
 curl -u elastic:elastic http://localhost:9200/products/_count
 ```
@@ -108,6 +113,7 @@ pnpm dev
 ```
 
 The application will be available at:
+
 - **Main app**: http://localhost:3000
 - **Search demo**: http://localhost:3000/search-demo
 
